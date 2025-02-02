@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import StickersList from "./components/StickersList";
-import "./Login.css";
-import "./App.css";
+import "./css/Login.css";
+import "./css/App.css";
 
 function App() {
   return (
