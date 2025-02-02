@@ -5,18 +5,16 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // ⬅️ Użycie React Router do przekierowania
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const loginData = { email, password };
 
     try {
       const response = await fetch("http://localhost:8080/api/rest/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(loginData),
+        body: JSON.stringify({ email, password }),
       });
 
       if (!response.ok) {
@@ -24,8 +22,9 @@ function Login() {
       }
 
       const data = await response.json();
-      localStorage.setItem("token", data.token); // ⬅️ Zapisz token użytkownika (opcjonalnie)
-      navigate("/stickers"); // ⬅️ PRZEKIEROWANIE PO ZALOGOWANIU!
+      localStorage.setItem("token", data.token);
+
+      navigate("/my-stickers");
     } catch (error) {
       setError(error.message);
     }

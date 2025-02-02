@@ -4,14 +4,22 @@ function StickersList() {
     const [stickers, setStickers] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/stickers/all", {
+        const token = localStorage.getItem("token");
+
+        fetch("http://localhost:8080/api/customers/my-stickers", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
             mode: "cors",
         })
-            .then((res) => res.json())
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Błąd autoryzacji lub pobierania danych");
+                }
+                return res.json();
+            })
             .then((data) => setStickers(data))
             .catch((err) => console.error("Błąd pobierania stickerów:", err));
     }, []);

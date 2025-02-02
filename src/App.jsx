@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/stickers" element={<StickersList />} />
+        <Route path="/my-stickers" element={<StickersList />} />
       </Routes>
     </Router>
   );
