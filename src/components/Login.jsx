@@ -55,6 +55,10 @@ function Login() {
         {error && <p className="error">{error}</p>}
         <button type="submit">Zaloguj się</button>
       </form>
+      <br />
+      <button onClick={() => navigate("/register")} className="register-button">
+        Zarejestruj się
+      </button>
     </div>
   );
 }

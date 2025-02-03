@@ -37,7 +37,7 @@ function Header() {
             <div className="icons flex gap-4">
                 <FaBell className="icon text-xl cursor-pointer" />
                 <FaCog className="icon text-xl cursor-pointer" />
-                {isLoggedIn && location.pathname !== "/login" && (
+                {isLoggedIn && location.pathname !== "http://localhost:8080/api/rest/auth/login" && (
                     <button 
                         onClick={handleLogout} 
                         className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-all">
